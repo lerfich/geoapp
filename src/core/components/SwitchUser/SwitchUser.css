@@ -1,0 +1,7 @@
+.switchUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+  margin: 1rem;
+}

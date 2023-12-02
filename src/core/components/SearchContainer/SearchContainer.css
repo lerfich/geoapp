@@ -1,0 +1,15 @@
+.searchContainer {
+  display: grid;
+  grid-template-columns: 5fr 2fr 1fr;
+  column-gap: 1rem;
+  margin: 1rem;
+}
+
+.filterAvailableSwitch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  border: 0.1rem solid rebeccapurple;
+  border-radius: 0.3rem;
+}

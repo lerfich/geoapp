@@ -1,0 +1,12 @@
+.publisherPanel {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+}
+
+.addNewDatasetButton {
+  background-color: yellow;
+  border: 0.1rem dashed red;
+  border-radius: 2rem;
+  margin-left: 1rem;
+}

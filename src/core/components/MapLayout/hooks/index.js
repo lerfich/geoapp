@@ -1,0 +1,1 @@
+export { useGetMap } from "./useGetMap";
