@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export const useGetMap = () => {
   const [pointCoordinates, setPointCoordinates] = useState();
@@ -7,10 +8,18 @@ export const useGetMap = () => {
     setPointCoordinates(coordinates);
   };
 
-  const onStartSearching = () => {
+  const onStartSearching = async () => {
     //TODO: await fetch request to get array data
-    // await fetch({})
-    console.log(pointCoordinates, "sending coordinates");
+    const response = await axios.post(
+      "http://localhost:5001/handling",
+      pointCoordinates
+    );
+
+    const { entities, title } = response.data;
+
+    const parsedEntities = JSON.parse(entities);
+
+    console.log({ title, parsedEntities }, "result");
   };
 
   return { onChangePointCoordinates, onStartSearching, pointCoordinates };

@@ -94,7 +94,7 @@ export const DatasetFormModal = ({
               </Typography>
               <TextField
                 required
-                fullWidth
+                fullWidth={true}
                 label="title"
                 multiline
                 rows={1}
@@ -113,7 +113,7 @@ export const DatasetFormModal = ({
               <TextField
                 label="description"
                 value={dataset.description}
-                fullWidth
+                fullWidth={true}
                 multiline
                 rows={3}
                 onChange={(e) => onChangeForm(e, "description")}

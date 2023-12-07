@@ -23,7 +23,7 @@ export const SwitchUser = ({
   return (
     <div className="switchUser">
       <Button
-        fullWidth="true"
+        fullWidth={true}
         variant="contained"
         color={publisherButtonColor}
         onClick={onSwitchToPublisher}
@@ -31,7 +31,7 @@ export const SwitchUser = ({
         {isCurrentlyPublisher ? currentRoleText : switchRoleText}
       </Button>
       <Button
-        fullWidth="true"
+        fullWidth={true}
         variant="contained"
         color={consumerButtonColor}
         onClick={onSwitchToConsumer}

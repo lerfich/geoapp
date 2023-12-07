@@ -92,7 +92,7 @@ export const SearchContainer = ({
       ) : (
         <div />
       )}
-      <FormControl fullWidth>
+      <FormControl fullWidth={true}>
         <InputLabel>Sort</InputLabel>
         <Select value={sortOption} label="Sort" onChange={handleSortChange}>
           {sortOptions.map((option) => (

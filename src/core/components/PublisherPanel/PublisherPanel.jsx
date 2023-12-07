@@ -46,7 +46,7 @@ export const PublisherPanel = ({ onAddDataset }) => {
       <div className="addNewDatasetButton">
         <IconButton
           color="secondary"
-          fullWidth="true"
+          fullWidth={true}
           onClick={onOpenDatasetCreateModal}
         >
           <AddIcon />
