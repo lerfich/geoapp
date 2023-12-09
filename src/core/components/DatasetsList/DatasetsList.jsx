@@ -25,12 +25,12 @@ export const DatasetsList = ({
       ) : (
         <div className="emptyContainer">
           <Typography variant="h5" color="grey">
-            Seems there`s no any datasets exist. Try add new one, if you`re
-            &nbsp;
+            Seems there`s no points found.
+            {/* Try add new one, if you`re &nbsp; */}
           </Typography>
-          <Typography variant="h5" color="goldenrod">
+          {/* <Typography variant="h5" color="goldenrod">
             Publisher
-          </Typography>
+          </Typography> */}
         </div>
       )}
     </div>

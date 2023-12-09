@@ -3,7 +3,7 @@ import { USERS } from "../constants";
 
 export const useUsers = () => {
   // simple store to contain current user
-  const [currentUser, setCurrentUser] = useState(USERS[0]);
+  const [currentUser, setCurrentUser] = useState(USERS[1]);
 
   const isCurrentlyPublisher = currentUser.title === USERS[0].title;
 

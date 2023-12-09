@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export const useGetMap = () => {
+export const useGetMap = (onAddMapPoints) => {
   const [pointCoordinates, setPointCoordinates] = useState();
 
   const onChangePointCoordinates = (coordinates) => {
@@ -19,7 +19,9 @@ export const useGetMap = () => {
 
     const parsedEntities = JSON.parse(entities);
 
-    console.log({ title, parsedEntities }, "result");
+    // console.log({ title, parsedEntities }, "result");
+
+    onAddMapPoints(parsedEntities);
   };
 
   return { onChangePointCoordinates, onStartSearching, pointCoordinates };

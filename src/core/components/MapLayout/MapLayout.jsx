@@ -9,11 +9,9 @@ import { useGetMap } from "./hooks";
 
 import "./MapLayout.css";
 
-export const MapLayout = () => {
+export const MapLayout = ({ onAddMapPoints }) => {
   const { onChangePointCoordinates, onStartSearching, pointCoordinates } =
-    useGetMap();
-
-  console.log(am4WorldLowData, "data");
+    useGetMap(onAddMapPoints);
 
   const chart = am4core.create("chartdiv", am4maps.MapChart);
   chart.geodata = am4WorldLowData;

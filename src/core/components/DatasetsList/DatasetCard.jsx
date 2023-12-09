@@ -56,38 +56,46 @@ export const DatasetCard = ({
     onDatasetEditionModalClose();
   };
 
-  let descriptionText = "Show descrtiption";
+  let descriptionText = "Show coordinates";
   // depending on state of description (open/close) it contains 'close' or 'open' functions
   let handleDescriptionStatus = onOpenDatasetDescription;
   let descriptionButtonColor = "success";
 
   if (isDescriptionOpened) {
-    descriptionText = "Hide description";
+    descriptionText = "Hide coordinates";
     handleDescriptionStatus = onCloseDatasetDescription;
     descriptionButtonColor = "secondary";
   }
 
-  const description = dataset.description;
+  // const description = dataset.description;
 
   // flatting the array of words for batches to display on differen lines
-  const multiLineDescription = description
-    ? description
-        .split(" ")
-        .flatMap((word, index) => ((index + 1) % 7 === 0 ? [word, "\n"] : word))
-        .join(" ")
-    : "Empty description";
+  // const multiLineDescription = description
+  //   ? description
+  //       .split(" ")
+  //       .flatMap((word, index) => ((index + 1) % 7 === 0 ? [word, "\n"] : word))
+  //       .join(" ")
+  //   : "Empty description";
+  const description = `\n Latitude: ${dataset.latitude} \n Longitude: ${dataset.longitude}`;
 
   const title =
-    dataset.title.length > 30 ? dataset.title + "..." : dataset.title;
+    dataset.entityName.length > 30
+      ? dataset.entityName + "..."
+      : dataset.entityName;
 
   return (
     <div className="datasetCard">
       <div className="datasetText">
-        <Typography variant="h4">Title: {title}</Typography>
+        <Typography variant="h4">Entity name: {title}</Typography>
         {isDescriptionOpened ? (
-          <Typography variant="body1" className="displayLinebreak">
-            Description: {multiLineDescription}
-          </Typography>
+          <>
+            <Typography variant="body1" className="displayLinebreak">
+              Coordinates: {description}
+            </Typography>
+            <Typography variant="body1" className="displayLinebreak">
+              Distance: {dataset.distance} km
+            </Typography>
+          </>
         ) : null}
       </div>
       <div className="datasetButtons">

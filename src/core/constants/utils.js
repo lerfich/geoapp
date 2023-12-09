@@ -1,5 +1,5 @@
 export const sortOptions = ["initial", "asc", "desc"];
 export const sortType = {
-  title: "title",
-  description: "description",
+  entityName: "By name",
+  distance: "By distance",
 };

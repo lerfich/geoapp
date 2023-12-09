@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
 
 export const useDatasets = () => {
@@ -12,9 +13,11 @@ export const useDatasets = () => {
   // getting only available datasets for consumers
   const availableDatasets = datasets.filter(({ isAvailable }) => isAvailable);
 
-  // function to create dataset (push to the end of array)
-  const onAddDataset = (newDataset) => {
-    setDatasets((prev) => [...prev, newDataset]);
+  const onAddMapPoints = (mapPoints) => {
+    setDatasets((prev) => [
+      ...prev,
+      ...mapPoints.map((item) => ({ ...item, id: nanoid() })),
+    ]);
   };
 
   // function to remove dataset by id
@@ -35,36 +38,36 @@ export const useDatasets = () => {
   const onSortDataset = (order, type) => {
     switch (order) {
       case "asc": {
-        if (type === "title") {
+        if (type === "By name") {
           const sortingDataset = [...datasets];
           setResults(
             sortingDataset.sort((datasetA, datasetB) =>
-              datasetA.title > datasetB.title ? 1 : -1
+              datasetA.entityName > datasetB.entityName ? 1 : -1
             )
           );
         } else {
           const sortingDataset = [...datasets];
           setResults(
             sortingDataset.sort((datasetA, datasetB) =>
-              datasetA.description > datasetB.description ? 1 : -1
+              datasetA.distance > datasetB.distance ? 1 : -1
             )
           );
         }
         break;
       }
       case "desc": {
-        if (type === "title") {
+        if (type === "By name") {
           const sortingDataset = [...datasets];
           setResults(
             sortingDataset.sort((datasetA, datasetB) =>
-              datasetA.title > datasetB.title ? -1 : 1
+              datasetA.entityName > datasetB.entityName ? -1 : 1
             )
           );
         } else {
           const sortingDataset = [...datasets];
           setResults(
             sortingDataset.sort((datasetA, datasetB) =>
-              datasetA.description > datasetB.description ? -1 : 1
+              datasetA.distance > datasetB.distance ? -1 : 1
             )
           );
         }
@@ -81,10 +84,7 @@ export const useDatasets = () => {
   const onSearchDataset = (searchString) => {
     if (searchString) {
       setResults(
-        datasets.filter(
-          ({ description, title }) =>
-            description.includes(searchString) || title.includes(searchString)
-        )
+        datasets.filter(({ entityName }) => entityName.includes(searchString))
       );
     } else {
       // return initial array when search string is empty
@@ -113,15 +113,28 @@ export const useDatasets = () => {
     }
   };
 
+  //   distance
+  // :
+  // 2588.2203369180484
+  // entityName
+  // :
+  // "Hopsital of St.Angeles"
+  // latitude
+  // :
+  // 59.21287123
+  // longitude
+  // :
+  // 31.6123
+
   // if we change the initial datasets array we have to change the results (for sorting, filtering etc) as well
   useEffect(() => {
     setResults(datasets);
   }, [datasets]);
 
   return {
+    onAddMapPoints,
     onSortDataset,
     onSearchDataset,
-    onAddDataset,
     onRemoveDataset,
     onEditDataset,
     onFilterDataset,

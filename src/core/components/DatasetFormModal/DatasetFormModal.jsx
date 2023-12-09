@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import {
-  Button,
-  Modal,
-  Box,
-  Typography,
-  Switch,
-  TextField,
-} from "@mui/material";
+import { Button, Modal, Box, Typography, TextField } from "@mui/material";
 import { DEFAULT_DATASET } from "../../constants";
 
 import "./DatasetFormModal.css";
@@ -78,8 +71,8 @@ export const DatasetFormModal = ({
     setDataset(form);
   };
 
-  const isTitleFilled = dataset.title;
-  const isDescriptionFilled = dataset.description;
+  const isTitleFilled = dataset.entityName;
+  // const isDescriptionFilled = dataset.description;
 
   const isAllFilled = isTitleFilled;
 
@@ -98,12 +91,12 @@ export const DatasetFormModal = ({
                 label="title"
                 multiline
                 rows={1}
-                value={dataset.title}
-                onChange={(e) => onChangeForm(e, "title")}
+                value={dataset.entityName}
+                onChange={(e) => onChangeForm(e, "entityName")}
                 variant="outlined"
               />
             </div>
-            <div className="modalFormField">
+            {/* <div className="modalFormField">
               <Typography
                 variant="h6"
                 color={isDescriptionFilled ? "green" : "grey"}
@@ -119,8 +112,8 @@ export const DatasetFormModal = ({
                 onChange={(e) => onChangeForm(e, "description")}
                 variant="outlined"
               />
-            </div>
-            <div className="modalFormField">
+            </div> */}
+            {/* <div className="modalFormField">
               <Typography variant="h6" color="green">
                 Availability (Y/N)
               </Typography>
@@ -129,7 +122,7 @@ export const DatasetFormModal = ({
                 onChange={(e) => onChangeForm(e, "isAvailable")}
                 inputProps={{ "aria-label": "controlled" }}
               />
-            </div>
+            </div> */}
           </div>
 
           {isAllFilled ? (

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  SwitchUser,
-  DatasetsList,
-  PublisherPanel,
-  SearchContainer,
-  MapLayout,
-} from "../../components";
+import { DatasetsList, SearchContainer, MapLayout } from "../../components";
 import { useDatasets, useUsers } from "../../hooks";
 import "./Layout.css";
 
@@ -13,40 +7,34 @@ import "./Layout.css";
 export const Layout = () => {
   // hook to manipulate with databases (records) to edit/delete/create etc, while getting actual datasets and available
   const {
-    onAddDataset,
     onRemoveDataset,
     onEditDataset,
     onSortDataset,
     onSearchDataset,
     onFilterDataset,
+    onAddMapPoints,
     datasets,
-    availableDatasets,
   } = useDatasets();
 
   // hook to manipulate with users (switching, getting current user and their rights)
-  const {
-    currentUser,
-    isCurrentlyPublisher,
-    onSwitchToPublisher,
-    onSwitchToConsumer,
-  } = useUsers();
+  const { isCurrentlyPublisher } = useUsers();
 
   return (
     <div>
       <div className="layout">
-        <SwitchUser
+        {/* <SwitchUser
           currentUser={currentUser}
           onSwitchToConsumer={onSwitchToConsumer}
           onSwitchToPublisher={onSwitchToPublisher}
           isCurrentlyPublisher={isCurrentlyPublisher}
-        />
-        {isCurrentlyPublisher ? (
+        /> */}
+        {/* {isCurrentlyPublisher ? (
           <PublisherPanel onAddDataset={onAddDataset} />
         ) : (
           <div />
-        )}
+        )} */}
       </div>
-      <MapLayout />
+      <MapLayout onAddMapPoints={onAddMapPoints} />
       <SearchContainer
         onSortDataset={onSortDataset}
         onFilterDataset={onFilterDataset}
@@ -55,7 +43,7 @@ export const Layout = () => {
       />
       <DatasetsList
         isCurrentlyPublisher={isCurrentlyPublisher}
-        datasets={isCurrentlyPublisher ? datasets : availableDatasets}
+        datasets={datasets}
         onRemoveDataset={onRemoveDataset}
         onEditDataset={onEditDataset}
       />

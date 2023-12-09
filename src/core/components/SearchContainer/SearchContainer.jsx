@@ -56,7 +56,7 @@ export const SearchContainer = ({
 
   // if change sort option we have to start sorting across datasets
   useEffect(() => {
-    onSortDataset(sortOption, sortType.title);
+    onSortDataset(sortOption, sortType.distance);
   }, [sortOption]);
 
   // if change filter option we have to start filtering across datasets

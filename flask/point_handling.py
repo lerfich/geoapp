@@ -36,7 +36,6 @@ def add_some_points():
     for elem in results:
         final_point_coords.append({'latitude': elem[0], 'longitude': elem[1], 'entityName': elem[2], 'distance': elem[3]})
 
-    print(final_point_coords, 'sss')
     return {'title': 'hospitals','entities': json.dumps(final_point_coords)}
 
 def getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2):
@@ -47,7 +46,6 @@ def getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2):
     
     c = 2 * atan2(sqrt(a), sqrt(1-a)); 
     d = eR * c; # Distance in km
-    print(d, 'distance in km')
     return d
 
 
