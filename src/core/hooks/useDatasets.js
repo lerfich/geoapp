@@ -14,10 +14,7 @@ export const useDatasets = () => {
   const availableDatasets = datasets.filter(({ isAvailable }) => isAvailable);
 
   const onAddMapPoints = (mapPoints) => {
-    setDatasets((prev) => [
-      ...prev,
-      ...mapPoints.map((item) => ({ ...item, id: nanoid() })),
-    ]);
+    setDatasets(mapPoints.map((item) => ({ ...item, id: nanoid() })));
   };
 
   // function to remove dataset by id

@@ -3,26 +3,30 @@ import axios from "axios";
 
 export const useGetMap = (onAddMapPoints) => {
   const [pointCoordinates, setPointCoordinates] = useState();
+  const [foundResults, setFoundResult] = useState([]);
 
   const onChangePointCoordinates = (coordinates) => {
     setPointCoordinates(coordinates);
   };
 
   const onStartSearching = async () => {
-    //TODO: await fetch request to get array data
     const response = await axios.post(
       "http://localhost:5001/handling",
       pointCoordinates
     );
 
-    const { entities, title } = response.data;
+    const { entities } = response.data;
 
     const parsedEntities = JSON.parse(entities);
 
-    // console.log({ title, parsedEntities }, "result");
-
+    setFoundResult(parsedEntities);
     onAddMapPoints(parsedEntities);
   };
 
-  return { onChangePointCoordinates, onStartSearching, pointCoordinates };
+  return {
+    onChangePointCoordinates,
+    onStartSearching,
+    pointCoordinates,
+    foundResults,
+  };
 };
