@@ -13,6 +13,7 @@ app.config["SERVER_NAME"] = "localhost:5001"
 @cross_origin(origin='*',headers=['Content-Type', 'Access-Control-Allow-Origin'])
 def add_some_points():
     initial_point = json.loads(request.data)
+    # print(initial_point, 'init point', initial_point['isLocalSearch'])
     print('request started')
     points_data = pd.read_csv('geodata_202312161354.csv')
     print('request ok')

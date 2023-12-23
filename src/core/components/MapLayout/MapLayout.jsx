@@ -13,6 +13,8 @@ export const MapLayout = ({ onAddMapPoints }) => {
   const {
     onChangePointCoordinates,
     onStartSearching,
+    onChangeSearchType,
+    isLocalSearch,
     pointCoordinates,
     foundResults,
   } = useGetMap(onAddMapPoints);
@@ -66,17 +68,28 @@ export const MapLayout = ({ onAddMapPoints }) => {
     onChangePointCoordinates(newPoint);
   });
 
+  const searchingType = isLocalSearch ? "Local searching" : "Global searching";
+
   return (
     <div className="mapContainer">
       {pointCoordinates ? (
         <>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={onStartSearching}
-          >
-            Search for hospitals
-          </Button>
+          <div className="buttonsContainer">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={onStartSearching}
+            >
+              Search for hospitals
+            </Button>
+            <Button
+              variant={isLocalSearch ? "contained" : "outlined"}
+              color={isLocalSearch ? "primary" : "success"}
+              onClick={onChangeSearchType}
+            >
+              {searchingType}
+            </Button>
+          </div>
           <Typography>
             longitude: {pointCoordinates.longitude}
             <br />

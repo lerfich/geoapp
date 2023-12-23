@@ -6,3 +6,8 @@
 .mapContainer {
   margin: 1rem;
 }
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
