@@ -15,7 +15,16 @@ def add_some_points():
     initial_point = json.loads(request.data)
     # print(initial_point, 'init point', initial_point['isLocalSearch'])
     print('request started')
-    points_data = pd.read_csv('geodata_202312161354.csv')
+    #если ломается мб ошибка в пути, у меня такой подходит только
+    points_data = pd.read_csv('flask/geodata_202312161354.csv')
+    
+    #if points_data['isLocalSearch'] == 1:
+    #local_points = points_data[points_data['geolocation_state']==initial_point['state']]
+    #if len(local_points)==0:
+    #print('No data in this country, only global search avaliable')
+    #else:
+    #points_data = local_points
+    
     print('request ok')
     points_data = points_data[['geolocation_lat',	'geolocation_lng',	'geolocation_city']]
     points_data['dist'] = points_data.apply(lambda x: getDistanceFromLatLonInKm(lat1=x['geolocation_lat'], lon1=x['geolocation_lng'], lat2=initial_point['latitude'], lon2=initial_point['longitude']), axis=1)
