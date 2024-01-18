@@ -25,7 +25,7 @@ export const DatasetsList = ({
       ) : (
         <div className="emptyContainer">
           <Typography variant="h5" color="grey">
-            Seems there`s no points found.
+            Пока что не добавлено никаких объектов. Выберите точку на карте.
             {/* Try add new one, if you`re &nbsp; */}
           </Typography>
           {/* <Typography variant="h5" color="goldenrod">

@@ -56,13 +56,13 @@ export const DatasetCard = ({
     onDatasetEditionModalClose();
   };
 
-  let descriptionText = "Show coordinates";
+  let descriptionText = "Показать координаты";
   // depending on state of description (open/close) it contains 'close' or 'open' functions
   let handleDescriptionStatus = onOpenDatasetDescription;
   let descriptionButtonColor = "success";
 
   if (isDescriptionOpened) {
-    descriptionText = "Hide coordinates";
+    descriptionText = "Скрыть координаты";
     handleDescriptionStatus = onCloseDatasetDescription;
     descriptionButtonColor = "secondary";
   }
@@ -76,7 +76,7 @@ export const DatasetCard = ({
   //       .flatMap((word, index) => ((index + 1) % 7 === 0 ? [word, "\n"] : word))
   //       .join(" ")
   //   : "Empty description";
-  const description = `\n Latitude: ${dataset.latitude} \n Longitude: ${dataset.longitude}`;
+  const description = `\n Широта: ${dataset.latitude} \n Долгота: ${dataset.longitude}`;
 
   const title =
     dataset.entityName.length > 30
@@ -86,14 +86,14 @@ export const DatasetCard = ({
   return (
     <div className="datasetCard">
       <div className="datasetText">
-        <Typography variant="h4">Entity name: {title}</Typography>
+        <Typography variant="h4">Название объекта: {title}</Typography>
         {isDescriptionOpened ? (
           <>
             <Typography variant="body1" className="displayLinebreak">
-              Coordinates: {description}
+              Координаты: {description}
             </Typography>
             <Typography variant="body1" className="displayLinebreak">
-              Distance: {dataset.distance} km
+              Дистанция: {dataset.distance} km
             </Typography>
           </>
         ) : null}

@@ -73,7 +73,7 @@ export const SearchContainer = ({
     <div className="searchContainer">
       <TextField
         variant="outlined"
-        label="Search field"
+        label="Введите название объекта для поиска"
         value={searchString}
         onChange={onSearchChange}
         fullWidth={true}
@@ -93,8 +93,12 @@ export const SearchContainer = ({
         <div />
       )}
       <FormControl fullWidth={true}>
-        <InputLabel>Sort</InputLabel>
-        <Select value={sortOption} label="Sort" onChange={handleSortChange}>
+        <InputLabel>Сортировка</InputLabel>
+        <Select
+          value={sortOption}
+          label="Сортировка"
+          onChange={handleSortChange}
+        >
           {sortOptions.map((option) => (
             <MenuItem key={option} value={option}>
               {option}

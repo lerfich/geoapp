@@ -34,7 +34,7 @@ export const useDatasets = () => {
   // function to sort dataset. Implemented only by title but possible other options. Default alphabetical sort.
   const onSortDataset = (order, type) => {
     switch (order) {
-      case "asc": {
+      case "возрастание": {
         if (type === "By name") {
           const sortingDataset = [...datasets];
           setResults(
@@ -52,7 +52,7 @@ export const useDatasets = () => {
         }
         break;
       }
-      case "desc": {
+      case "убывание": {
         if (type === "By name") {
           const sortingDataset = [...datasets];
           setResults(
@@ -71,7 +71,7 @@ export const useDatasets = () => {
         break;
       }
       // while initial return default (stored) array
-      case "initial": {
+      case "инициализация": {
         setResults(datasets);
       }
     }

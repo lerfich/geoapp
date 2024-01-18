@@ -16,7 +16,7 @@ def add_some_points():
     # print(initial_point, 'init point', initial_point['isLocalSearch'])
     print('request started')
     #если ломается мб ошибка в пути, у меня такой подходит только
-    points_data = pd.read_csv('flask/geodata_202312161354.csv')
+    points_data = pd.read_csv('geodata_202312161354.csv')
     
     #if points_data['isLocalSearch'] == 1:
     #local_points = points_data[points_data['geolocation_state']==initial_point['state']]

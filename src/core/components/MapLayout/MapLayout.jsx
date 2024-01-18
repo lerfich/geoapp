@@ -13,8 +13,8 @@ export const MapLayout = ({ onAddMapPoints }) => {
   const {
     onChangePointCoordinates,
     onStartSearching,
-    onChangeSearchType,
-    isLocalSearch,
+    // onChangeSearchType,
+    // isLocalSearch,
     pointCoordinates,
     foundResults,
   } = useGetMap(onAddMapPoints);
@@ -68,7 +68,7 @@ export const MapLayout = ({ onAddMapPoints }) => {
     onChangePointCoordinates(newPoint);
   });
 
-  const searchingType = isLocalSearch ? "Local searching" : "Global searching";
+  // const searchingType = isLocalSearch ? "Local searching" : "Global searching";
 
   return (
     <div className="mapContainer">
@@ -80,20 +80,20 @@ export const MapLayout = ({ onAddMapPoints }) => {
               color="primary"
               onClick={onStartSearching}
             >
-              Search for hospitals
+              Искать госпитали
             </Button>
-            <Button
+            {/* <Button
               variant={isLocalSearch ? "contained" : "outlined"}
               color={isLocalSearch ? "primary" : "success"}
               onClick={onChangeSearchType}
             >
               {searchingType}
-            </Button>
+            </Button> */}
           </div>
           <Typography>
-            longitude: {pointCoordinates.longitude}
+            широта: {pointCoordinates.longitude}
             <br />
-            latitude: {pointCoordinates.latitude}
+            долгота: {pointCoordinates.latitude}
           </Typography>
         </>
       ) : null}
